@@ -1,5 +1,3 @@
-import './style.css';
-
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -12,7 +10,6 @@ const firebaseConfig = {
   appId: "1:395292065661:web:c4125488884d2b788a9614",
   measurementId: "G-M7D1P2DKL7"
 };
-
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
@@ -36,6 +33,8 @@ let remoteStream = null;
 // HTML elements
 const webcamButton = document.getElementById('webcamButton');
 const webcamVideo = document.getElementById('webcamVideo');
+// const webcamButtonRef =useRef(null);
+// const webcamVideoRef = useRef(null);  
 const callButton = document.getElementById('callButton');
 const callInput = document.getElementById('callInput');
 const answerButton = document.getElementById('answerButton');
@@ -43,7 +42,6 @@ const remoteVideo = document.getElementById('remoteVideo');
 const hangupButton = document.getElementById('hangupButton');
 
 // 1. Setup media sources
-
 webcamButton.onclick = async () => {
   localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
   remoteStream = new MediaStream();
@@ -67,6 +65,14 @@ webcamButton.onclick = async () => {
   answerButton.disabled = false;
   webcamButton.disabled = true;
 };
+// const startWebcam = async () => {
+//   try {
+//     const localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+//     webcamVideoRef.current.srcObject = localStream;
+//   } catch (error) {
+//     console.error('Error starting webcam:', error);
+//   }
+// };
 
 // 2. Create an offer
 callButton.onclick = async () => {
@@ -151,3 +157,8 @@ answerButton.onclick = async () => {
     });
   });
 };
+const handelinput =()=>{
+  console.log("hey")
+}
+
+export default handelinput
